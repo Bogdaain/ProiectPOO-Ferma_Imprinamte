@@ -1,1 +1,1 @@
-# ProiectPOO-Ferma_Imprinamte
+# ProiectPOO-Ferma_Imprimante
