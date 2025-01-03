@@ -1,8 +1,9 @@
-﻿namespace DefaultNamespace;
+﻿using Ferma_Imprinamte.Classes;
+namespace DefaultNamespace;
 
 public class StocFilament
 {
-    private Dictionary<string, duble> stoc;
+    private Dictionary<string, double> stoc;
 
     public StocFilament()
     {
