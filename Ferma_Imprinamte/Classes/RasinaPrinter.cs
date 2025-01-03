@@ -1,8 +1,7 @@
 ﻿using Ferma_Imprinamte.Classes;
-
 namespace DefaultNamespace;
 
-public class Rasina :Printer
+public class RasinaPrinter :Printer
 {
     public void Adaugare()
     {
