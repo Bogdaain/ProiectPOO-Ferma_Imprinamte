@@ -18,5 +18,7 @@ public class ServiciuComenzi
             Culoare = culoare,
             Adresa = adresa
         };
+        comenzi.Add(comandaNoua);
+        return "Comanda a fost efectuata";
     }
 }
