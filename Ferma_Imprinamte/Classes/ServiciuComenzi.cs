@@ -21,4 +21,24 @@ public class ServiciuComenzi
         comenzi.Add(comandaNoua);
         return "Comanda a fost efectuata";
     }
+
+    public string PreluareComenzi()
+    {
+        if (comenzi.Count == 0)
+        {
+            return "Nu sunt comenzi disponibile";
+        }
+
+        string rezultat = "Comenzile sunt urmatoarele: ";
+        foreach (var comanda in comenzi)
+        {
+            rezultat += comanda.ToString() + " ";
+        }
+        return rezultat;
+    }
+
+    //public string ProcesareaComenzilor(Ferma ferma)
+    //{
+        
+   // }
 }
