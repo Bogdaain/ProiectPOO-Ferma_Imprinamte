@@ -42,4 +42,22 @@ public class Ferma
             return printer.ToString();    
         }
     }
+    public string AdaugareRasina(int cnp)
+    {
+        Printer printer = null;
+        foreach (var p in printere)
+        {
+            if (p.CNP == cnp && p is RasinaPrinter)
+            {
+                printer = p;
+                break;
+            }
+        }
+        if (printer == null)
+            return "Imprimanta nu a fost gasita";
+
+        ((RasinaPrinter)printer).AddResin();
+        return "Rasina adaugata cu succes";
+    }
+    
 }
