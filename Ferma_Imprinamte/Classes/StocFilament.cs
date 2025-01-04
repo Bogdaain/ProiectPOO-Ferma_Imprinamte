@@ -33,4 +33,21 @@ public class StocFilament
         }
         return rezultat;
     }
+
+    public void StergereStoc()
+    {
+        var obiectSters = new List<string>();
+        foreach (var item in stoc)
+        {
+            if (item.Value < 10)
+            {
+                obiectSters.Add(item.Key);
+            }
+        }
+
+        foreach (var key in obiectSters)
+        {
+            stoc.Remove(key);
+        }
+    }
 }
