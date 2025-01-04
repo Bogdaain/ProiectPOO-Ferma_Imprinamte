@@ -20,4 +20,26 @@ public class Ferma
         }
         return inventar;
     }
+
+    public string DetaliiImprimata(int cnp)
+    {
+        Printer printer = null;
+        foreach (var p in printere)
+        {
+            if (p.CNP == cnp)
+            {
+                printer = p;
+                break;
+            }
+        }
+
+        if (printer == null)
+        {
+            retunr "Nu sa gasit imprimanta.";
+        }
+        else
+        {
+            return printer.ToString();    
+        }
+    }
 }
