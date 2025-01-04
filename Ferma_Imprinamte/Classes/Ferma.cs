@@ -35,7 +35,7 @@ public class Ferma
 
         if (printer == null)
         {
-            retunr "Nu sa gasit imprimanta.";
+            return "Nu sa gasit imprimanta.";
         }
         else
         {
