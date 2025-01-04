@@ -20,8 +20,18 @@ class Program
             switch (optiune)
             {
                 case "1":
+                    //MeniuUtilizator();
                     break;
-                    
+                case "2":
+                    //MeniuAdmin();
+                    break;
+                case "3":
+                    Console.WriteLine("La revedere!");
+                    return;
+                default:
+                    Console.WriteLine("Optiune invalida. Apasati orice tasta pentru a reincerca");
+                    Console.ReadKey();
+                    break;
             }
         }
     }
