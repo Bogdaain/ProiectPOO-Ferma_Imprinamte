@@ -58,6 +58,25 @@ public class Ferma
             return "Imprimanta nu a fost gasita";
         rasinaPrinter.Adaugare();
         return "Rășină adăugată cu succes";
+
+        public string SchimbareFilament(int cnp, StocFilament stocFilament)
+        {
+            PlasticPrinter plasticPrinter = null;
+            foreach (var printer in printere)
+            {
+                if (printer.cnp && cnp is PlasticPrinter)
+                {
+                    plasticPrinter = (PlasticPrinter)printer;
+                    break;
+                }
+            }
+
+            if (plasticPrinter == null)
+            {
+                return "Imprimanta nu a fost gasita";
+            }
+            return plasticPrinter.SchimbaFilament(stocFilament);
+        }
     }
     
 }
