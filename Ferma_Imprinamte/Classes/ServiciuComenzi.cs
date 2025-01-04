@@ -13,7 +13,7 @@ public class ServiciuComenzi
     {
         Comanda comandaNoua = new Comanda
         {
-            Numa = nume,
+            Nume = nume,
             Greutate = greutate,
             Culoare = culoare,
             Adresa = adresa
