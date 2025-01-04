@@ -3,7 +3,7 @@ namespace DefaultNamespace;
 
 public class RasinaPrinter :Printer
 {
-    public void Adaugare()
+    public void AdaugareRasina()
     {
         Status = " Adaugat";
     }
