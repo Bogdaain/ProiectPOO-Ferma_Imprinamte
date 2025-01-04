@@ -1,3 +1,5 @@
+using DefaultNamespace;
+
 namespace Ferma_Imprinamte.Classes;
 
 public class Ferma
@@ -32,7 +34,6 @@ public class Ferma
                 break;
             }
         }
-
         if (printer == null)
         {
             return "Nu sa gasit imprimanta.";
@@ -44,20 +45,19 @@ public class Ferma
     }
     public string AdaugareRasina(int cnp)
     {
-        Printer printer = null;
+        RasinaPrinter rasinaPrinter = null;
         foreach (var p in printere)
         {
             if (p.CNP == cnp && p is RasinaPrinter)
             {
-                printer = p;
+                rasinaPrinter = (RasinaPrinter)p; // aruncca exceptia daca p nu e de tipul ResinaPrinter
                 break;
             }
         }
-        if (printer == null)
+        if (rasinaPrinter == null)
             return "Imprimanta nu a fost gasita";
-
-        ((RasinaPrinter)printer).AddResin();
-        return "Rasina adaugata cu succes";
+        rasinaPrinter.Adaugare();
+        return "Rășină adăugată cu succes";
     }
     
 }
