@@ -56,7 +56,7 @@ public class Ferma
         }
         if (rasinaPrinter == null)
             return "Imprimanta nu a fost gasita";
-        rasinaPrinter.Adaugare();
+        rasinaPrinter.AdaugareRasina();
         return "Rășină adăugată cu succes";
     }
 
@@ -76,7 +76,7 @@ public class Ferma
         {
             return "Imprimanta nu a fost gasita";
         }
-        return plasticPrinter.SchimbareFilament(stoc);
+        return plasticPrinter.SchimbaFilament(stoc);
     }
     
     
