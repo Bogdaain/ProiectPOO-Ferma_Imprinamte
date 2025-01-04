@@ -37,8 +37,18 @@ public class ServiciuComenzi
         return rezultat;
     }
 
-    //public string ProcesareaComenzilor(Ferma ferma)
-    //{
-        
-   // }
+    public string ProcesareaComenzilor(Ferma ferma)
+    {
+        if (comenzi.Count == 0)
+        {
+            return "Nu sunt comenzi disponibile";
+        }
+        string rezultat = "Comenzile sunt urmatoarele: ";
+        foreach (var comanda in comenzi)
+        {
+            rezultat += $"Procesare {comanda.Nume}";
+        }
+        comenzi.Clear();
+        return rezultat + "toate comenzile sunt ok";
+    }
 }
