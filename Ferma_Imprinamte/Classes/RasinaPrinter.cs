@@ -8,3 +8,4 @@ public class RasinaPrinter :Printer
         Status = " Adaugat";
     }
 }
+}

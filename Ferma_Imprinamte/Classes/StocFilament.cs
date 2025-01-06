@@ -1,5 +1,4 @@
-﻿using Ferma_Imprinamte.Classes;
-namespace DefaultNamespace;
+﻿namespace DefaultNamespace;
 
 public class StocFilament
 {

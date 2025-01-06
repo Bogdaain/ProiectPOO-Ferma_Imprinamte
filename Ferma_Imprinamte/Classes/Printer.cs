@@ -5,8 +5,9 @@ public abstract class Printer
     public int CNP { get; set; }
     public string Status { get; set; }
 
-    public override string ToString()
+    protected Printer(int cnp, string status)
     {
-        return $"Printer ID: {CNP}, Status: {Status}";
+        CNP = cnp;
+        Status = status;
     }
 }

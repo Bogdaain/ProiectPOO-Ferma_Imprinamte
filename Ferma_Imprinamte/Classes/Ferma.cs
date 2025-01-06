@@ -1,7 +1,3 @@
-using DefaultNamespace;
-
-namespace Ferma_Imprinamte.Classes;
-
 public class Ferma
 {
     private List<Printer> printere;
@@ -40,7 +36,7 @@ public class Ferma
         }
         else
         {
-            return printer.ToString();    
+            return printer.ToString();
         }
     }
     public string AdaugareRasina(int cnp)
@@ -78,6 +74,6 @@ public class Ferma
         }
         return plasticPrinter.SchimbaFilament(stoc);
     }
-    
-    
+
+
 }
