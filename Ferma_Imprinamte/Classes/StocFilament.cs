@@ -2,6 +2,8 @@
 
 public class StocFilament
 {
+    public double CostPerGramRasina { get; private set; } = 0.5;
+    public double CostPerGramPlastic { get; private set; } = 0.3;
     private Dictionary<string, double> stoc;
     public StocFilament()
     {
