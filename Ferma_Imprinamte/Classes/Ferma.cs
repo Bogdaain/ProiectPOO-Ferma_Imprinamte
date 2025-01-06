@@ -1,79 +1,29 @@
+using DefaultNamespace;
+using Ferma_Imprinamte.Classes;
+
 public class Ferma
 {
-    private List<Printer> printere;
+    public List<Printer> printere;
+    private StocFilament stocFilament;
+    private ServiciuComenzi serviciuComenzi;
 
     public Ferma()
     {
-        printere = new List<Printer>();
+        printere = new List<Printer>
+        {
+            new PlasticPrinter(1001, "Disponibil", 1000.0),
+            new RasinaPrinter(1002, "Disponibil", 500.0),
+            new PlasticPrinter(1003, "Disponibil", 800.0),
+            new RasinaPrinter(1004, "In reparatie", 0.0), 
+            new PlasticPrinter(1005, "Disponibil", 1200.0)
+        };
+        stocFilament = new StocFilament();
+        serviciuComenzi = new ServiciuComenzi();
     }
-
-    public string InventarImprimante()
+    public string VizualizareCosturi()
     {
-        if(printere.Count == 0)
-            return "Nu exista imprimante disponibile";
-        string inventar = "Imprimante:\n";
-        foreach (var printer in printere)
-        {
-            inventar += $"ID: {printer.CNP}, Status: {printer.Status}\n";
-        }
-        return inventar;
+        return $"Cost per gram rășină: {stocFilament.CostPerGramRasina} RON\n" +
+               $"Cost per gram plastic: {stocFilament.CostPerGramPlastic} RON";
     }
-
-    public string DetaliiImprimata(int cnp)
-    {
-        Printer printer = null;
-        foreach (var p in printere)
-        {
-            if (p.CNP == cnp)
-            {
-                printer = p;
-                break;
-            }
-        }
-        if (printer == null)
-        {
-            return "Nu sa gasit imprimanta.";
-        }
-        else
-        {
-            return printer.ToString();
-        }
-    }
-    public string AdaugareRasina(int cnp)
-    {
-        RasinaPrinter rasinaPrinter = null;
-        foreach (var p in printere)
-        {
-            if (p.CNP == cnp && p is RasinaPrinter)
-            {
-                rasinaPrinter = (RasinaPrinter)p; // aruncca exceptia daca p nu e de tipul ResinaPrinter
-                break;
-            }
-        }
-        if (rasinaPrinter == null)
-            return "Imprimanta nu a fost gasita";
-        rasinaPrinter.AdaugareRasina();
-        return "Rășină adăugată cu succes";
-    }
-
-    public string SchimbareFilament(int cnp, StocFilament stoc)
-    {
-        PlasticPrinter plasticPrinter = null;
-        foreach (var printer in printere)
-        {
-            if (printer.CNP == cnp && printer is PlasticPrinter)
-            {
-                plasticPrinter = (PlasticPrinter)printer;
-                break;
-            }
-        }
-
-        if (plasticPrinter == null)
-        {
-            return "Imprimanta nu a fost gasita";
-        }
-        return plasticPrinter.SchimbaFilament(stoc);
-    }
-
 
 }
