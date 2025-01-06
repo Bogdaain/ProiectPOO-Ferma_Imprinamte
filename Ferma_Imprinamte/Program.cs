@@ -2,35 +2,30 @@
 namespace Ferma_Imprinamte;
 class Program
 {
-    static List<Printer> printere = new List<Printer>();
-    static List<string> comenzi = new List<string>();
-    static Dictionary<string, double> stocFilament = new Dictionary<string, double>();
-    static double costPerGramRasina = 0.5;
-    static double costPerGramPlastic = 0.3;
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("Alegeto o optiune: ");
-            Console.WriteLine("1. Utilizator\n2. Administrator\n3. Iesire");
-            string optiune = Console.ReadLine();
+            Console.WriteLine("Meniu Principal:");
+            Console.WriteLine("1. Utilizator");
+            Console.WriteLine("2. Administrator");
+            Console.WriteLine("3. Iesire");
+            string option = Console.ReadLine();
 
-            switch (optiune)
+            switch (option)
             {
                 case "1":
-                    //MeniuUtilizator();
+                    MeniuUtilizator();
                     break;
                 case "2":
-                    //MeniuAdmin();
+                    MeniuAdministrator();
                     break;
                 case "3":
                     Console.WriteLine("La revedere!");
                     return;
                 default:
-                    Console.WriteLine("Optiune invalida. Apasati orice tasta pentru a reincerca");
-                    Console.ReadKey();
+                    Console.WriteLine("Optiune invalida. Incearca din nou.");
                     break;
             }
         }
