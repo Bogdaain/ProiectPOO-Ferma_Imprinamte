@@ -124,5 +124,32 @@ public class Ferma
 
         return string.Join("\n", inventar);
     }
+    public string VizualizareStocFilament()
+    {
+        return stocFilament.DetaliiStoc();
+    }
 
+    public string AdaugaFilamentInStoc(string tip, string culoare, double cantitate)
+    {
+        stocFilament.AdaugaFilament(tip, culoare, cantitate);
+        return "Filament adăugat cu succes.";
+    }
+
+    public string SchimbareFilamentInStoc(int cnp, StocFilament stoc)
+    {
+        PlasticPrinter plasticPrinter = null;
+
+        foreach (var p in printere)
+        {
+            if (p.CNP == cnp && p is PlasticPrinter)
+            {
+                plasticPrinter = p as PlasticPrinter;
+                break;
+            }
+        }
+        if (plasticPrinter == null)
+            return "Imprimanta nu a fost găsită sau nu este de tipul PlasticPrinter.";
+
+        return plasticPrinter.SchimbaFilament(stoc);
+    }
 }
