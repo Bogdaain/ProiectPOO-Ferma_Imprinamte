@@ -42,9 +42,7 @@ public class Ferma
         {
             return "Imprimanta nu a fost găsită.";
         }
-
         double cost = 0;
-
         if (imprimanta is PlasticPrinter)
         {
             cost = greutate * stocFilament.CostPerGramPlastic;
@@ -62,7 +60,16 @@ public class Ferma
     }
     public string DetaliiImprimanta(int cnp)
     {
-        var imprimanta = printere.Find(p => p.CNP == cnp);
+        Printer imprimanta = null;
+
+        foreach (var printer in printere)
+        {
+            if (printer.CNP == cnp)
+            {
+                imprimanta = printer;
+                break;
+            }
+        }
 
         if (imprimanta == null)
         {
@@ -86,4 +93,36 @@ public class Ferma
             return "Imprimanta nu este de tip Plastic sau Rășină.";
         }
     }
+    public string AdaugareRasina(int cnp, double cantitateRasina)
+    {
+        RasinaPrinter imprimanta = null;
+
+        foreach (var printer in printere)
+        {
+            if (printer.CNP == cnp && printer is RasinaPrinter)
+            {
+                imprimanta = (RasinaPrinter)printer;
+                break;
+            }
+        }
+        if (imprimanta == null)
+            return "Imprimanta nu a fost găsită sau nu este de tipul RasinaPrinter.";
+
+        imprimanta.AdaugareRasina(cantitateRasina);
+        return "Rășină adăugată cu succes.";
+    }
+    public string VizualizareImprimante()
+    {
+        if (printere.Count == 0)
+            return "Nu există imprimante disponibile.";
+
+        List<string> inventar = new List<string> { "Imprimante:" };
+        foreach (var printer in printere)
+        {
+            inventar.Add($"ID: {printer.CNP}, Status: {printer.Status}");
+        }
+
+        return string.Join("\n", inventar);
+    }
+
 }
