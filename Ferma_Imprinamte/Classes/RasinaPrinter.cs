@@ -14,4 +14,3 @@ public class RasinaPrinter :Printer
         RasinaDisponibila += cantitate;
     }
 }
-}
