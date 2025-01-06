@@ -5,7 +5,7 @@ public class RasinaPrinter :Printer
 {
     
     public double RasinaDisponibila { get; set; }
-    public RasinaPrinter(int cnp ,string status ,double RasinaDisponibila):base(cnp,status)
+    public RasinaPrinter(int cnp ,string status ,double rasinaDisponibila):base(cnp,status)
     {
         RasinaDisponibila = rasinaDisponibila;
     }
