@@ -3,9 +3,15 @@ namespace DefaultNamespace;
 
 public class RasinaPrinter :Printer
 {
-    public void AdaugareRasina()
+    
+    public double RasinaDisponibila { get; set; }
+    public RasinaPrinter(int cnp ,string status ,double RasinaDisponibila):base(cnp,status)
     {
-        Status = " Adaugat";
+        RasinaDisponibila = rasinaDisponibila;
+    }
+    public void AdaugareRasina(double cantitate)
+    {
+        RasinaDisponibila += cantitate;
     }
 }
 }
