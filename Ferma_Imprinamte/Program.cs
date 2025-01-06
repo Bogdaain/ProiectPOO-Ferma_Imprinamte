@@ -61,7 +61,7 @@ class Program
                         }
                         else
                         {
-                            Console.WriteLine("Greutate invalidă.");
+                            Console.WriteLine("Greutate invalida.");
                         }
                     }
                     else
@@ -147,6 +147,52 @@ class Program
                         Console.WriteLine("CNP invalid.");
                     }
                     break;
+                case "3":
+                        Console.Write("Introdu CNP-ul imprimantei pentru adaugare rasina: ");
+                        if (int.TryParse(Console.ReadLine(), out int cnpRasina))
+                        {
+                            Console.Write("Introdu cantitatea de rasina de adaugat: ");
+                            if (double.TryParse(Console.ReadLine(), out double cantitateRasina))
+                            {
+                                Console.WriteLine(fermaImprimante.AdaugareRasina(cnpRasina, cantitateRasina));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Cantitate de rasina invalida.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("CNP invalid.");
+                        }
+                        Console.ReadKey();
+                        break;
+                case "4":
+                        Console.WriteLine(fermaImprimante.VizualizareStocFilament());
+                        Console.ReadKey();
+                        break;
+                case "5":
+                        Console.Write("Introdu tipul filamentului: ");
+                        string tipFilament = Console.ReadLine();
+                        Console.Write("Introdu culoarea filamentului: ");
+                        string culoareFilament = Console.ReadLine();
+                        Console.Write("Introdu cantitatea filamentului (in grame): ");
+                        if (double.TryParse(Console.ReadLine(), out double cantitateFilament))
+                        {
+                            Console.WriteLine(fermaImprimante.AdaugaFilamentInStoc(tipFilament, culoareFilament, cantitateFilament));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cantitatea introdusa nu este valida.");
+                        }
+                        Console.ReadKey();
+                        break;
+                    case "6":
+                        return;
+                    default:
+                        Console.WriteLine("Optiune invalida. Incearca din nou.");
+                        break;
+                
             }
         }
     }

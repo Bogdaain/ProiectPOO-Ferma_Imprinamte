@@ -73,7 +73,7 @@ public class Ferma
 
         if (imprimanta == null)
         {
-            return "Imprimanta nu a fost găsită.";
+            return "Imprimanta nu a fost gasita.";
         }
 
         if (imprimanta is PlasticPrinter plasticPrinter)
@@ -85,12 +85,12 @@ public class Ferma
         else if (imprimanta is RasinaPrinter rasinaPrinter)
         {
             return $"CNP: {imprimanta.CNP}\n" +
-                   $"Tip Material: Rășină\n" +
+                   $"Tip Material: Rasina\n" +
                    $"Status: {imprimanta.Status}\n";
         }
         else
         {
-            return "Imprimanta nu este de tip Plastic sau Rășină.";
+            return "Imprimanta nu este de tip Plastic sau Rasina.";
         }
     }
     public string AdaugareRasina(int cnp, double cantitateRasina)
@@ -106,15 +106,15 @@ public class Ferma
             }
         }
         if (imprimanta == null)
-            return "Imprimanta nu a fost găsită sau nu este de tipul RasinaPrinter.";
+            return "Imprimanta nu a fost gasita sau nu este de tipul RasinaPrinter.";
 
         imprimanta.AdaugareRasina(cantitateRasina);
-        return "Rășină adăugată cu succes.";
+        return "Rasina adaugata cu succes.";
     }
     public string VizualizareImprimante()
     {
         if (printere.Count == 0)
-            return "Nu există imprimante disponibile.";
+            return "Nu exista imprimante disponibile.";
 
         List<string> inventar = new List<string> { "Imprimante:" };
         foreach (var printer in printere)
@@ -132,7 +132,7 @@ public class Ferma
     public string AdaugaFilamentInStoc(string tip, string culoare, double cantitate)
     {
         stocFilament.AdaugaFilament(tip, culoare, cantitate);
-        return "Filament adăugat cu succes.";
+        return "Filament adaugat cu succes.";
     }
 
     public string SchimbareFilamentInStoc(int cnp, StocFilament stoc)
@@ -148,7 +148,7 @@ public class Ferma
             }
         }
         if (plasticPrinter == null)
-            return "Imprimanta nu a fost găsită sau nu este de tipul PlasticPrinter.";
+            return "Imprimanta nu a fost gasita sau nu este de tipul PlasticPrinter.";
 
         return plasticPrinter.SchimbaFilament(stoc);
     }

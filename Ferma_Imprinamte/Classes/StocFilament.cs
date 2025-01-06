@@ -26,13 +26,15 @@ public class StocFilament
     public string DetaliiStoc()
     {
         if (stoc.Count == 0)
-            return "Nu este nii n filament in stoc.";
-        string rezultat = "Stoc de filament: \n";
+            return "Nu există niciun filament în stoc.";
+
+        List<string> rezultat = new List<string> { "Stoc de filament: " };
         foreach (var item in stoc)
         {
-            rezultat += $"{item.Key}: {item.Value}\n";
+            rezultat.Add($"{item.Key}: {item.Value} gr");
         }
-        return rezultat;
+
+        return string.Join("\n", rezultat);
     }
 
     public void StergereStoc()
