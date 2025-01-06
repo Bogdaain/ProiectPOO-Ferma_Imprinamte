@@ -25,37 +25,5 @@ public class Ferma
         return $"Cost per gram rășină: {stocFilament.CostPerGramRasina} RON\n" +
                $"Cost per gram plastic: {stocFilament.CostPerGramPlastic} RON";
     }
-    
-    public string CalculeazaCostObiect(double greutate, int cnpImprimanta)
-    {
-        Printer imprimanta = null;
-
-        foreach (var printer in printere)
-        {
-            if (printer.CNP == cnpImprimanta)
-            {
-                imprimanta = printer;
-                break;
-            }
-        }
-    
-        if (imprimanta == null)
-        {
-            return "Imprimanta nu a fost găsită.";
-        }
-
-        double cost = 0;
-
-        if (imprimanta is PlasticPrinter)
-        {
-            cost = greutate * stocFilament.CostPerGramPlastic;
-        }
-        else if (imprimanta is RasinaPrinter)
-        {
-            cost = greutate * stocFilament.CostPerGramRasina;
-        }
-
-        return $"Costul obiectului pe imprimanta cu CNP {cnpImprimanta}: {cost} RON";
-    }
 
 }
