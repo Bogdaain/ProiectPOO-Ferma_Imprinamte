@@ -1,6 +1,6 @@
 using DefaultNamespace;
-using Ferma_Imprinamte.Classes;
 
+namespace Ferma_Imprinamte.Classes;
 public class Ferma
 {
     public List<Printer> printere;
@@ -55,5 +55,35 @@ public class Ferma
         }
 
         return $"Costul obiectului pe imprimanta cu CNP {cnpImprimanta}: {cost} RON";
+    }
+    public string PlaseazaComanda(string nume, double greutate, string culoare, string adresa)
+    {
+        return serviciuComenzi.CreareComanda(nume, greutate, culoare, adresa);
+    }
+    public string DetaliiImprimanta(int cnp)
+    {
+        var imprimanta = printere.Find(p => p.CNP == cnp);
+
+        if (imprimanta == null)
+        {
+            return "Imprimanta nu a fost găsită.";
+        }
+
+        if (imprimanta is PlasticPrinter plasticPrinter)
+        {
+            return $"CNP: {imprimanta.CNP}\n" +
+                   $"Tip Material: Plastic\n" +
+                   $"Status: {imprimanta.Status}\n";
+        }
+        else if (imprimanta is RasinaPrinter rasinaPrinter)
+        {
+            return $"CNP: {imprimanta.CNP}\n" +
+                   $"Tip Material: Rășină\n" +
+                   $"Status: {imprimanta.Status}\n";
+        }
+        else
+        {
+            return "Imprimanta nu este de tip Plastic sau Rășină.";
+        }
     }
 }
