@@ -25,5 +25,5 @@ public class Ferma
         return $"Cost per gram rășină: {stocFilament.CostPerGramRasina} RON\n" +
                $"Cost per gram plastic: {stocFilament.CostPerGramPlastic} RON";
     }
-
+    
 }
