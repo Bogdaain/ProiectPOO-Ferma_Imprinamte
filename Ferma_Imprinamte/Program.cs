@@ -1,8 +1,10 @@
 ﻿using Ferma_Imprinamte.Classes;
 namespace Ferma_Imprinamte;
+
 class Program
 {
     private static Ferma fermaImprimante = new Ferma();
+
     public static void Main(string[] args)
     {
         while (true)
@@ -43,6 +45,7 @@ class Program
             Console.WriteLine("3. Plaseaza o comanda");
             Console.WriteLine("4. Inapoi la meniul principal");
             string option = Console.ReadLine();
+
             switch (option)
             {
                 case "1":
@@ -51,34 +54,35 @@ class Program
                     break;
                 case "2":
                     Console.WriteLine(fermaImprimante.VizualizareImprimante());
-                    Console.WriteLine("Introdu CNP-ul imprimantei pentru calculul costului: ");
+                    Console.Write("Introdu CNP-ul imprimantei pentru calculul costului: ");
                     if (int.TryParse(Console.ReadLine(), out int cnpImprimanta))
                     {
-                        Console.WriteLine("Introdu greutatea obiectului: ");
+                        Console.Write("Introdu greutatea obiectului: ");
                         if (double.TryParse(Console.ReadLine(), out double greutate))
                         {
                             Console.WriteLine(fermaImprimante.CalculeazaCostObiect(greutate, cnpImprimanta));
                         }
                         else
                         {
-                            Console.WriteLine("Greutate invalida.");
+                            Console.WriteLine("Greutate invalidă.");
                         }
                     }
                     else
                     {
                         Console.WriteLine("CNP invalid.");
                     }
+
                     Console.ReadKey();
                     break;
                 case "3":
-                    Console.WriteLine("Introdu numele obiectului: ");
+                    Console.Write("Introdu numele obiectului: ");
                     string numeObiect = Console.ReadLine();
-                    Console.WriteLine("Introdu greutatea obiectului: ");
+                    Console.Write("Introdu greutatea obiectului: ");
                     if (double.TryParse(Console.ReadLine(), out double greutateComanda))
                     {
-                        Console.WriteLine("Introdu culoarea obiectului: ");
+                        Console.Write("Introdu culoarea obiectului: ");
                         string culoareObiect = Console.ReadLine();
-                        Console.WriteLine("Introdu adresa de livrare: ");
+                        Console.Write("Introdu adresa de livrare: ");
                         string adresaComanda = Console.ReadLine();
 
                         Console.WriteLine(fermaImprimante.PlaseazaComanda(numeObiect, greutateComanda,
@@ -99,6 +103,7 @@ class Program
             }
         }
     }
+
     private static void MeniuAdministrator()
     {
         while (true)
@@ -123,16 +128,7 @@ class Program
                     Console.Write("Introdu CNP-ul imprimantei: ");
                     if (int.TryParse(Console.ReadLine(), out int cnp))
                     {
-                        Printer imprimanta = null;
-
-                        foreach (var imprimantaCurenta in fermaImprimante.printere)
-                        {
-                            if (imprimantaCurenta.CNP == cnp)
-                            {
-                                imprimanta = imprimantaCurenta;
-                                break;
-                            }
-                        }
+                        var imprimanta = fermaImprimante.printere.Find(i => i.CNP == cnp);
                         if (imprimanta != null)
                         {
                             Console.WriteLine(fermaImprimante.DetaliiImprimanta(cnp));
@@ -146,54 +142,59 @@ class Program
                     {
                         Console.WriteLine("CNP invalid.");
                     }
+
+                    Console.ReadKey();
                     break;
                 case "3":
-                        Console.Write("Introdu CNP-ul imprimantei pentru adaugare rasina: ");
-                        if (int.TryParse(Console.ReadLine(), out int cnpRasina))
+                    Console.Write("Introdu CNP-ul imprimantei pentru adăugare rășină: ");
+                    if (int.TryParse(Console.ReadLine(), out int cnpRasina))
+                    {
+                        Console.Write("Introdu cantitatea de rășină de adăugat: ");
+                        if (double.TryParse(Console.ReadLine(), out double cantitateRasina))
                         {
-                            Console.Write("Introdu cantitatea de rasina de adaugat: ");
-                            if (double.TryParse(Console.ReadLine(), out double cantitateRasina))
-                            {
-                                Console.WriteLine(fermaImprimante.AdaugareRasina(cnpRasina, cantitateRasina));
-                            }
-                            else
-                            {
-                                Console.WriteLine("Cantitate de rasina invalida.");
-                            }
+                            Console.WriteLine(fermaImprimante.AdaugareRasina(cnpRasina, cantitateRasina));
                         }
                         else
                         {
-                            Console.WriteLine("CNP invalid.");
+                            Console.WriteLine("Cantitate de rășină invalidă.");
                         }
-                        Console.ReadKey();
-                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("CNP invalid.");
+                    }
+
+                    Console.ReadKey();
+                    break;
                 case "4":
-                        Console.WriteLine(fermaImprimante.VizualizareStocFilament());
-                        Console.ReadKey();
-                        break;
+                    Console.WriteLine(fermaImprimante.VizualizareStocFilament());
+                    Console.ReadKey();
+                    break;
                 case "5":
-                        Console.Write("Introdu tipul filamentului: ");
-                        string tipFilament = Console.ReadLine();
-                        Console.Write("Introdu culoarea filamentului: ");
-                        string culoareFilament = Console.ReadLine();
-                        Console.Write("Introdu cantitatea filamentului (in grame): ");
-                        if (double.TryParse(Console.ReadLine(), out double cantitateFilament))
-                        {
-                            Console.WriteLine(fermaImprimante.AdaugaFilamentInStoc(tipFilament, culoareFilament, cantitateFilament));
-                        }
-                        else
-                        {
-                            Console.WriteLine("Cantitatea introdusa nu este valida.");
-                        }
-                        Console.ReadKey();
-                        break;
-                    case "6":
-                        return;
-                    default:
-                        Console.WriteLine("Optiune invalida. Incearca din nou.");
-                        break;
-                
+                    Console.Write("Introdu tipul filamentului: ");
+                    string tipFilament = Console.ReadLine();
+                    Console.Write("Introdu culoarea filamentului: ");
+                    string culoareFilament = Console.ReadLine();
+                    Console.Write("Introdu cantitatea filamentului (in grame): ");
+                    if (double.TryParse(Console.ReadLine(), out double cantitateFilament))
+                    {
+                        Console.WriteLine(fermaImprimante.AdaugaFilamentInStoc(tipFilament, culoareFilament,
+                            cantitateFilament));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cantitatea introdusă nu este validă.");
+                    }
+
+                    Console.ReadKey();
+                    break;
+                case "6":
+                    return;
+                default:
+                    Console.WriteLine("Optiune invalida. Incearca din nou.");
+                    break;
             }
         }
     }
 }
+
