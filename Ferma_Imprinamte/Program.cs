@@ -64,7 +64,7 @@ class Program
                         }
                         else
                         {
-                            Console.WriteLine("Greutate invalidă.");
+                            Console.WriteLine("Greutate invalida.");
                         }
                     }
                     else
@@ -146,17 +146,17 @@ class Program
                     Console.ReadKey();
                     break;
                 case "3":
-                    Console.Write("Introdu CNP-ul imprimantei pentru adăugare rășină: ");
+                    Console.Write("Introdu CNP-ul imprimantei pentru adaugare rasina: ");
                     if (int.TryParse(Console.ReadLine(), out int cnpRasina))
                     {
-                        Console.Write("Introdu cantitatea de rășină de adăugat: ");
+                        Console.Write("Introdu cantitatea de rasina de adaugat: ");
                         if (double.TryParse(Console.ReadLine(), out double cantitateRasina))
                         {
                             Console.WriteLine(fermaImprimante.AdaugareRasina(cnpRasina, cantitateRasina));
                         }
                         else
                         {
-                            Console.WriteLine("Cantitate de rășină invalidă.");
+                            Console.WriteLine("Cantitate de rasina invalida.");
                         }
                     }
                     else
@@ -183,7 +183,7 @@ class Program
                     }
                     else
                     {
-                        Console.WriteLine("Cantitatea introdusă nu este validă.");
+                        Console.WriteLine("Cantitatea introdusa nu este valida.");
                     }
 
                     Console.ReadKey();

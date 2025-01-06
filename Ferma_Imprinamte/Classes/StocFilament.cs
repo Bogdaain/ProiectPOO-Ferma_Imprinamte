@@ -26,7 +26,7 @@ public class StocFilament
     public string DetaliiStoc()
     {
         if (stoc.Count == 0)
-            return "Nu există niciun filament în stoc.";
+            return "Nu exista niciun filament în stoc.";
 
         List<string> rezultat = new List<string> { "Stoc de filament: " };
         foreach (var item in stoc)
